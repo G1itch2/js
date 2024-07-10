@@ -58,4 +58,27 @@
         }
 
         function updateUI(index) {
-            docume
+            document.getElementById(`cell-${index}`).innerText = gameStatus[index];
+        }
+
+        function isGameOver() {
+            for (var i = 0; i < winningCombinations.length; i++) {
+                var [a, b, c] = winningCombinations[i];
+                if (gameStatus[a] !== '' && gameStatus[a] === gameStatus[b] && gameStatus[a] === gameStatus[c]) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function resetGame() {
+            currentPlayer = 'X';
+            gameStatus = ['', '', '', '', '', '', '', '', ''];
+            for (var i = 0; i < 9; i++) {
+                document.getElementById(`cell-${i}`).innerText = '';
+            }
+            document.getElementById('result').innerText = '';
+        }
+    </script>
+</body>
+</html>
